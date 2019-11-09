@@ -1,301 +1,213 @@
 <template>
-    <main id="app">
-        <header>
-            <strong>Welcome to your dashboard!</strong>
-        </header>
-        <section id="container">
-            <section id="main">
-                <div class="content">
-                    <div id="profile-container" class="tab active">
-                        <div id="profile">
-                            <div class="avatar">
-                                <img src="./assets/me.png" id="picture" alt="My picture">
-                            </div>
-                            <div class="info">
-                                <ul>
-                                    <li id="name">John Doe</li>
-                                    <li id="birthdate">11/10/1990</li>
-                                    <li id="faculty">Software Engineering</li>
-                                </ul>
-                            </div>
-                            <div id="gpa">
-                                <strong>2.75</strong>
-                            </div>
-                            <div class="clear-fix"></div>
-                        </div>
-                    </div>
-                    <div id="courses-container" class="tab">
-                        <h1 class="title">Courses</h1>
-                        <table id="courses">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Course Title</th>
-                                <th>Semester</th>
-                                <th>Grade</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Agile software development</td>
-                                <td>1</td>
-                                <td>82</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>System modeling</td>
-                                <td>1</td>
-                                <td>85</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Object-oriented programming</td>
-                                <td>2</td>
-                                <td>99</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Estonian language Level A2</td>
-                                <td>2</td>
-                                <td>65</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <br>
-                        <br>
-                        <div>
-                            <button id="add-course-button" class="blue-button">+</button>
-                            <span id="add-course">
-                                <input class="input" type="text" placeholder="Course title" id="title">
-                                <input class="input" type="number" min="1" max="8" placeholder="Semester" id="semester">
-                                <input class="input" type="number" min="0" max="100" placeholder="Grade" id="grade">
-                                <button class="green-button" id="save-course">Save</button>
-                                <button class="grey-button" id="cancel-course">Cancel</button>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="controls">
-                    <button id="profile-button" class="pill active">Profile</button>
-                    <button id="courses-button" class="pill">Courses</button>
-                </div>
-            </section>
-        </section>
-        <footer>
-            <ul class="links">
-                <li>
-                    <a href="https://ois2.ut.ee/" target="_blank">OIS</a>
-                </li>
-                <li>
-                    <a href="https://courses.cs.ut.ee/" target="_blank">Courses</a>
-                </li>
-            </ul>
-        </footer>
-    </main>
+  <main id="app">
+    <HeaderContainer />
+    <MainPage />
+    <FooterContainer />
+  </main>
 </template>
 
 <script>
-
-    export default {
-        name: 'app',
-        components: {}
-    }
+  import HeaderContainer from "./components/HeaderContainer";
+  import MainPage from "./components/MainPage";
+  import FooterContainer from "./components/FooterContainer";
+  export default {
+    name: 'app',
+    components: {FooterContainer, MainPage, HeaderContainer},
+  }
 </script>
 
 <style>
-    * {
-        box-sizing: border-box;
-        font-family: 'Livvic', sans-serif;
-    }
+  * {
+    box-sizing: border-box;
+    font-family: 'Livvic', sans-serif;
+  }
 
-    html, body {
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #eaeaea;
-    }
+  html, body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #eaeaea;
+  }
 
-    main {
-        position: relative;
-        min-height: 100%;
-        padding-bottom: 110px;
-    }
+  main {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 110px;
+  }
 
-    .clear-fix {
-        clear: both;
-    }
+  .clear-fix {
+    clear: both;
+  }
 
-    header {
-        padding: 20px;
-        background-color: #2196F3;
-        color: #ffffff;
-        text-align: center;
-        margin-bottom: 10px;
-        height: 60px;
-    }
+  header {
+    padding: 20px;
+    background-color: #2196F3;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 10px;
+    height: 60px;
+  }
 
-    footer {
-        padding: 30px 0;
-        background-color: #607D8B;
-        margin-top: 10px;
-        height: 100px;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-    }
+  footer {
+    padding: 30px 0;
+    background-color: #607D8B;
+    margin-top: 10px;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
 
-    footer .links {
-        display: block;
-        width: 100%;
-        max-width: 200px;
-        margin: 0 auto;
-        color: #acd7ff;
-        font-size: 11px;
-    }
+  footer .links {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    color: #acd7ff;
+    font-size: 11px;
+  }
 
-    footer .links a {
-        text-decoration: none;
-        color: #acd7ff;
-    }
+  footer .links a {
+    text-decoration: none;
+    color: #acd7ff;
+  }
 
-    footer .links a:hover {
-        text-decoration: underline;
-    }
+  footer .links a:hover {
+    text-decoration: underline;
+  }
 
-    #container {
-        width: 80%;
-        max-width: 900px;
-        min-width: 320px;
-        padding: 15px;
-        background-color: #ffffff;
-        margin: 0 auto;
-    }
+  #container {
+    width: 80%;
+    max-width: 900px;
+    min-width: 320px;
+    padding: 15px;
+    background-color: #ffffff;
+    margin: 0 auto;
+  }
 
-    #profile {
-        border-bottom: 1px dashed #a7a7a7;
-        padding-bottom: 10px;
-        margin-bottom: 10px;
-    }
+  #profile {
+    border-bottom: 1px dashed #a7a7a7;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
 
-    #profile div:not(.clear-fix) {
-        height: 190px;
-        float: left;
-        position: relative;
-    }
+  #profile div:not(.clear-fix) {
+    height: 190px;
+    float: left;
+    position: relative;
+  }
 
-    #profile .avatar {
-        width: 35%;
-        text-align: center;
-    }
+  #profile .avatar {
+    width: 35%;
+    text-align: center;
+  }
 
-    #profile .avatar img {
-        width: 180px;
-    }
+  #profile .avatar img {
+    width: 180px;
+  }
 
-    #profile .info {
-        width: 45%;
-    }
+  #profile .info {
+    width: 45%;
+  }
 
-    #profile #gpa {
-        width: 20%;
-    }
+  #profile #gpa {
+    width: 20%;
+  }
 
-    #profile #gpa strong {
-        position: absolute;
-        width: 100%;
-        height: 60px;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto auto;
-        font-size: 60px;
-        line-height: 60px;
-        text-align: center;
-    }
+  #profile #gpa strong {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto auto;
+    font-size: 60px;
+    line-height: 60px;
+    text-align: center;
+  }
 
-    .content {
-        padding: 10px;
-        border: 1px solid #cbcbcb;
-    }
+  .content {
+    padding: 10px;
+    border: 1px solid #cbcbcb;
+  }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
 
-    }
+  table th {
+    padding: 8px 12px;
+    text-align: left;
+    border: 1px solid #cbcbcb;
+    background-color: #03A9F4;
+    color: #ffffff;
+  }
 
-    table th {
-        padding: 8px 12px;
-        text-align: left;
-        border: 1px solid #cbcbcb;
-        background-color: #03A9F4;
-        color: #ffffff;
-    }
+  table td {
+    padding: 8px 12px;
+    border: 1px solid #cbcbcb;
+  }
 
-    table td {
-        padding: 8px 12px;
-        border: 1px solid #cbcbcb;
-    }
+  .content .tab {
+    display: none;
+  }
 
-    .content .tab {
-        display: none;
-    }
+  .content .tab.active {
+    display: block;
+  }
 
-    .content .tab.active {
-        display: block;
-    }
+  .controls .pill {
+    border: 1px solid #cbcbcb;
+    background-color: #eaeaea;
+    padding: 10px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top: none;
+    margin-top: -1px;
+    outline: none !important;
+  }
 
-    .controls .pill {
-        border: 1px solid #cbcbcb;
-        background-color: #eaeaea;
-        padding: 10px;
-        border-bottom-left-radius: 4px;
-        border-bottom-right-radius: 4px;
-        border-top: none;
-        margin-top: -1px;
-        outline: none !important;
-    }
+  .controls .pill.active {
+    background-color: #ffffff;
+    border-top: 1px solid #ffffff;
+  }
 
-    .controls .pill.active {
-        background-color: #ffffff;
-        border-top: 1px solid #ffffff;
-    }
+  .controls .pill:hover {
+    cursor: pointer;
+  }
 
-    .controls .pill:hover {
-        cursor: pointer;
-    }
+  .blue-button {
+    background-color: #2196F3;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+  }
 
-    .blue-button {
-        background-color: #2196F3;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-    }
+  .green-button {
+    background-color: #69f378;
+    color: #ffffff;
+    border: none;
+    padding: 10px 10px;
+  }
 
-    .green-button {
-        background-color: #69f378;
-        color: #ffffff;
-        border: none;
-        padding: 10px 10px;
-    }
+  .grey-button {
+    background-color: #e1e8e6;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+  }
 
-    .grey-button {
-        background-color: #e1e8e6;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-    }
+  .input {
+    border: 1px solid #cccccc;
+    padding: 10px 20px;
+    min-width: 135px;
+  }
 
-    .input {
-        border: 1px solid #cccccc;
-        padding: 10px 20px;
-        min-width: 135px;
-    }
-
-    #add-course {
-        display: none;
-    }
+  #add-course {
+    display: none;
+  }
 </style>
